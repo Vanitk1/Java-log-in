@@ -18,21 +18,22 @@ public class Main {
 
         while (attempts < 3) {
 
-//            IO.println("Please enter your username and password:");
+//          IO.println("Please enter your username and password:");
             IO.println("Please enter your username: ");
             String userName = reader.nextLine();
             IO.println("Please enter your password: ");
             String password = reader.nextLine();
 
-            if (userName.equals("") || password.equals("")) { // I didn't use .equals() before I was using == .equals() for strings
-                IO.println("Wrong credentials, Please enter your username and password:");
-
-            } else if (userName.equals(user) && password.equals(userPassword)) {
+            if (userName.equals(user) && password.equals(userPassword)) {
                 IO.println("login successful");
                 return; // loop continues without this!!!!
 
+            } else if (userName.equals("") || password.equals("")) { // I didn't use .equals() before I was using == .equals() for strings
+                IO.println("username or password is empty! :o Please try again");
+                attempts++;
+
             } else {
-                IO.println("login-failed");
+                IO.println("login-failed, Please enter your username and password again :(");
                 attempts++;
             }
         }
