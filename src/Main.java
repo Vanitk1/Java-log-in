@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        String user = "user";
-        String userPassword = "Password";
+        String[] user = {"user", "user1"};
+        String[] userPassword = {"Password", "Password1"};
 
         byte attempts = 0;
 
@@ -53,6 +53,7 @@ public class Main {
             for (int i = 0; i < password.length(); i++) {
                 if (Character.isUpperCase(password.charAt(i))) {
                     hasCapitalLetter = true;
+                    break;
                 }
             }
 
@@ -62,15 +63,36 @@ public class Main {
                 continue;
             }
 
+            boolean loggedIn = false;
 
-            if (userName.equals(user) && password.equals(userPassword)) {
-                IO.println("login successful");
-                return; // loop continues without this!!!!
+            for (int i = 0; i < user.length; i++) {
+                if(userName.equals(user[i]) && password.equals(userPassword[i])) {
+                    loggedIn = true;
+                    break;
+                }
+            }
 
+            if(loggedIn) {
+                IO.println("login successful!");
+                return;
             } else {
                 IO.println("login-failed, Please enter your username and password again :(");
                 attempts++;
             }
+
+
+//            if (userName.equals(user) && password.equals(userPassword)) {
+//                IO.println("login successful");
+//                return; // loop continues without this!!!!
+//
+//            } else {
+//                IO.println("login-failed, Please enter your username and password again :(");
+//                attempts++;
+//            }
+
+//             else if (userName.equals("") || password.equals("")) { // I didn't use .equals() before I was using == .equals() for strings
+//                IO.println("username or password is empty! :o Please try again");
+//                attempts++;
         }
 
 
@@ -82,3 +104,7 @@ public class Main {
 // THE USERNAME MUST BE ENTERED
 // IF USERNAME AND PASSWORD IS CORRECT (ALL GOOD)
 // IF THEY TYPE THE INFO 3 TIMES SAYS ACCESS DENIED
+
+// SEE IF METHODS CAN BE USED
+// SET UP AN ARRAY OF USERNAME AND PASSWORD
+// WANT IT TO CHECK USERNAME AND PASSWORD IS THE SAME AT INDEX 0
